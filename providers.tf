@@ -1,4 +1,7 @@
 terraform {
+  required_version = "~> 1.7"
+  backend "s3" {}
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -6,5 +9,8 @@ terraform {
     }
   }
 
-  backend "s3" {}
+}
+
+provider "aws" {
+  region = var.common.region
 }

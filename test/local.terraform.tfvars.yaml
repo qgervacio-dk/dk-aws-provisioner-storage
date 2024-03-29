@@ -1,20 +1,23 @@
 common:
   env: local
-  account: TODO
+  region: ap-southeast-1
 
 storage:
   s3:
     # sensible default attributes of an S3 bucket
     default:
       name_prefix: tf-bprint-prov-demo-
-      versioning:
-        enabled: false
+      versioning: Disabled
+      acl: private
 
     # buckets
     resources:
       - name: bucket-abc
-        acl: private
         control_object_ownership: true
         object_ownership: ObjectWriter
-        versioning:
-          enabled: true
+        versioning: Suspended
+
+      - name: bucket-def
+        control_object_ownership: true
+        object_ownership: ObjectWriter
+        versioning: Enabled

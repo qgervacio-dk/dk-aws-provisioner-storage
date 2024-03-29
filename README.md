@@ -55,26 +55,34 @@ $ make help
 
 | Name | Version |
 |------|---------|
+| terraform | ~> 1.7 |
 | aws | 5.43.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| aws | 5.43.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| s3\_buckets | terraform-aws-modules/s3-bucket/aws | 2.13.0 |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_s3_bucket_acl.bucket_acl](https://registry.terraform.io/providers/hashicorp/aws/5.43.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_versioning.bucket_versioning](https://registry.terraform.io/providers/hashicorp/aws/5.43.0/docs/resources/s3_bucket_versioning) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| common | n/a | <pre>object({<br>    env     = string<br>    account = string<br>  })</pre> | n/a | yes |
-| storage | n/a | <pre>object({<br>    s3 = object({<br>      default = object({<br>        name_prefix = string<br>        versioning = object({<br>          enabled = bool<br>        })<br>      })<br>      resources = list(object({<br>        name                     = string<br>        acl                      = string<br>        control_object_ownership = bool<br>        object_ownership         = string<br>        versioning = object({<br>          enabled = bool<br>        })<br>      }))<br>    })<br>  })</pre> | n/a | yes |
+| common | n/a | <pre>object({<br>    env    = string<br>    region = string<br>  })</pre> | n/a | yes |
+| storage | n/a | <pre>object({<br>    s3 = object({<br>      default = object({<br>        name_prefix = string<br>        acl         = string<br>        versioning  = string<br>      })<br>      resources = list(object({<br>        name                     = string<br>        control_object_ownership = bool<br>        object_ownership         = string<br>        acl                      = optional(string)<br>        versioning               = optional(string)<br>      }))<br>    })<br>  })</pre> | n/a | yes |
 
 ## Outputs
 
