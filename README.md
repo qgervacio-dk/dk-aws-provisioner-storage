@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # dk-aws-provisioner-storage
 
 This provisioner repository shows how to use a blueprint/provisioner model.
@@ -6,7 +7,7 @@ as an example to set up services on AWS storage related services.
 
 ## Object, file, and block storage
 
-* [s3](https://aws.amazon.com/s3) (_TODO_)
+* [s3](https://aws.amazon.com/s3)
 * [efs](https://aws.amazon.com/efs) (_TODO_)
 * [fsx](https://aws.amazon.com/fsx) (_TODO_)
 * [ebs](https://aws.amazon.com/ebs) (_TODO_)
@@ -29,3 +30,53 @@ as an example to set up services on AWS storage related services.
 
 * [disaster-recovery](https://aws.amazon.com/disaster-recovery) (_TODO_)
 * [backup](https://aws.amazon.com/backup) (_TODO_)
+
+## Development Requirements
+
+* [terraform](https://www.terraform.io/)
+* [tf-summarize](https://github.com/dineshba/tf-summarize)
+* [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+
+## Testing
+
+Create an environment test file appropriately named `./test/.env-test`. This file is ignored in `.gitignore`, so you need not worry 
+about including sensitive contents here.
+
+```
+# ./test/.env-test
+TF_LOG=DEBUG
+```
+
+```
+# get help
+$ make help
+```
+## Requirements
+
+| Name | Version |
+|------|---------|
+| aws | 5.43.0 |
+
+## Providers
+
+No providers.
+
+## Modules
+
+No modules.
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| common | n/a | <pre>object({<br>    env     = string<br>    account = string<br>  })</pre> | n/a | yes |
+| storage | n/a | <pre>object({<br>    s3 = object({<br>      default = object({<br>        name_prefix = string<br>        versioning = object({<br>          enabled = bool<br>        })<br>      })<br>      resources = list(object({<br>        name                     = string<br>        acl                      = string<br>        control_object_ownership = bool<br>        object_ownership         = string<br>        versioning = object({<br>          enabled = bool<br>        })<br>      }))<br>    })<br>  })</pre> | n/a | yes |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->

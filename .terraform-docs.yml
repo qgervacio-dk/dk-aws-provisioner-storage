@@ -1,0 +1,99 @@
+formatter: "markdown"
+
+version: ""
+
+header-from: providers.tf
+footer-from: ""
+
+recursive:
+  enabled: false
+  path: modules
+
+sections:
+  hide: []
+  show: []
+
+content: ""
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    # dk-aws-provisioner-storage
+
+    This provisioner repository shows how to use a blueprint/provisioner model.
+    It uses AWS [storage services](https://aws.amazon.com/products/storage/)
+    as an example to set up services on AWS storage related services.
+
+    ## Object, file, and block storage
+
+    * [s3](https://aws.amazon.com/s3)
+    * [efs](https://aws.amazon.com/efs) (_TODO_)
+    * [fsx](https://aws.amazon.com/fsx) (_TODO_)
+    * [ebs](https://aws.amazon.com/ebs) (_TODO_)
+    * [filecache](https://aws.amazon.com/filecache) (_TODO_)
+
+    ## Data migration
+
+    * [datasync](https://aws.amazon.com/datasync) (_TODO_)
+    * [snow](https://aws.amazon.com/snow) (_TODO_)
+
+    ## Hybrid cloud storage and edge computing
+
+    * [storagegateway](https://aws.amazon.com/storagegateway) (_TODO_)
+
+    ## Managed file transfer
+
+    * [aws-transfer-family](https://aws.amazon.com/aws-transfer-family) (_TODO_)
+
+    ## Disaster recovery and backup
+
+    * [disaster-recovery](https://aws.amazon.com/disaster-recovery) (_TODO_)
+    * [backup](https://aws.amazon.com/backup) (_TODO_)
+
+    ## Development Requirements
+
+    * [terraform](https://www.terraform.io/)
+    * [tf-summarize](https://github.com/dineshba/tf-summarize)
+    * [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+
+    ## Testing
+
+    Create an environment test file appropriately named `./test/.env-test`. This file is ignored in `.gitignore`, so you need not worry 
+    about including sensitive contents here.
+
+    ```
+    # ./test/.env-test
+    TF_LOG=DEBUG
+    ```
+
+    ```
+    # get help
+    $ make help
+    ```
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: false
+  color: true
+  default: true
+  description: false
+  escape: true
+  hide-empty: false
+  html: true
+  indent: 2
+  lockfile: true
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true
