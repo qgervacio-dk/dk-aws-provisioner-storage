@@ -5,7 +5,7 @@ module "s3_buckets" {
   for_each = local.s3_buckets
 
   acl                      = null # suppress warning
-  bucket                   = "${local.s3_default.name_prefix}${each.value.name}"
+  bucket                   = "${local.s3_default.name_prefix}${each.value.name}-${var.common.env}"
   object_ownership         = coalesce(each.value.object_ownership, local.s3_default.object_ownership)
   control_object_ownership = coalesce(each.value.control_object_ownership, local.s3_default.control_object_ownership)
 }
