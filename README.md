@@ -33,6 +33,7 @@ as an example to set up services on AWS storage related services.
 
 ## Development Requirements
 
+* [yq](https://github.com/mikefarah/yq)
 * [terraform](https://www.terraform.io/)
 * [tf-summarize](https://github.com/dineshba/tf-summarize)
 * [terraform-docs](https://github.com/terraform-docs/terraform-docs)
