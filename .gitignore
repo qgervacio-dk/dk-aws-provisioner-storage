@@ -35,7 +35,7 @@ override.tf.json
 terraform.rc
 
 # Testing
-.env-test
+.env
 *.terraform.tfvars.yaml
 *.json.edited
 !test/*.terraform.tfvars.yaml
