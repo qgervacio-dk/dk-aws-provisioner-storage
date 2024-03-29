@@ -1,3 +1,4 @@
+# Common
 variable "common" {
   type = object({
     env    = string
@@ -5,6 +6,7 @@ variable "common" {
   })
 }
 
+# S3 storage
 variable "storage" {
   type = object({
     s3 = object({
