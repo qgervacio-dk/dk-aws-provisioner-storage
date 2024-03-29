@@ -22,7 +22,13 @@ env_test := $(bpdir)/.env
 include $(env_test)
 export $(shell sed 's/=.*//' $(env_test))
 
-#@ Test
+##@ Docs
+
+g: generate-readme
+generate-readme: ## (g) Generate README
+	@terraform-docs markdown . -c .terraform-docs.yml > README.md
+
+##@ Deploy
 
 i: init
 init: ## (i) Init
@@ -31,7 +37,6 @@ init: ## (i) Init
 		-backend-config="key=${tfstate_key}" \
 		-backend-config="region=${tfstate_region}"
 	@terraform workspace select $(workspace) || terraform workspace new $(workspace)
-	@terraform-docs markdown . -c .terraform-docs.yml > README.md
 	@yq --prettyPrint $(bpdir)/$(workspace).terraform.tfvars.yaml -o=json > terraform.tfvars.json || exit 1
 	@terraform fmt -recursive
 
