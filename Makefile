@@ -10,6 +10,7 @@ help: ## Display this help
 
 # matches the "local" in local.terraform.tfvars.yaml just like in ci
 workspace := local
+bpdir := test
 
 # s3 backend
 tfstate_bucket := tf-state-bprint-prov-sample
@@ -31,7 +32,7 @@ init: ## (i) Init
 		-backend-config="region=${tfstate_region}"
 	@terraform workspace select $(workspace) || terraform workspace new $(workspace)
 	@terraform-docs markdown . -c .terraform-docs.yml > README.md
-	@yq --prettyPrint test/$(workspace).terraform.tfvars.yaml -o=json > terraform.tfvars.json || exit 1
+	@yq --prettyPrint $(bpdir)/$(workspace).terraform.tfvars.yaml -o=json > terraform.tfvars.json || exit 1
 	@terraform fmt -recursive
 
 p: plan
