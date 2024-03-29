@@ -18,7 +18,7 @@ tfstate_key := tfstate/storage/$(workspace)
 tfstate_region := ap-southeast-1
 
 # env vars for export
-env_test := test/.env-test
+env_test := $(bpdir)/.env-test
 include $(env_test)
 export $(shell sed 's/=.*//' $(env_test))
 
