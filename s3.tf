@@ -6,8 +6,8 @@ module "s3_buckets" {
 
   acl                      = null # suppress warning
   bucket                   = "${local.s3_default.name_prefix}${each.value.name}"
-  control_object_ownership = each.value.control_object_ownership
-  object_ownership         = each.value.object_ownership
+  object_ownership         = coalesce(each.value.object_ownership, local.s3_default.object_ownership)
+  control_object_ownership = coalesce(each.value.control_object_ownership, local.s3_default.control_object_ownership)
 }
 
 resource "aws_s3_bucket_acl" "bucket_acl" {

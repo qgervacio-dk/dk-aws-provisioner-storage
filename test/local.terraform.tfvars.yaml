@@ -4,20 +4,16 @@ common:
 
 storage:
   s3:
-    # sensible default attributes of an S3 bucket
+    # sensible default attributes of an s3 bucket
     default:
       name_prefix: tf-bprint-prov-demo-
-      versioning: Disabled
       acl: private
+      versioning: Disabled
+      object_ownership: ObjectWriter
+      control_object_ownership: true
 
     # buckets
     resources:
       - name: bucket-abc
-        control_object_ownership: true
-        object_ownership: ObjectWriter
-        versioning: Suspended
-
-      - name: bucket-def
-        control_object_ownership: true
-        object_ownership: ObjectWriter
         versioning: Enabled
+      - name: bucket-def

@@ -9,16 +9,18 @@ variable "storage" {
   type = object({
     s3 = object({
       default = object({
-        name_prefix = string
-        acl         = string
-        versioning  = string
+        name_prefix              = string
+        acl                      = string
+        versioning               = string
+        control_object_ownership = bool
+        object_ownership         = string
       })
       resources = list(object({
         name                     = string
-        control_object_ownership = bool
-        object_ownership         = string
         acl                      = optional(string)
         versioning               = optional(string)
+        object_ownership         = optional(string)
+        control_object_ownership = optional(bool)
       }))
     })
   })
